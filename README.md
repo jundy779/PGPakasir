@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YoSawer 🥤
 
-## Getting Started
+Personal donation gateway buat kreator Indonesia.  
+Pakai **Next.js 15 + ShadCN UI + Pakasir** → bisa terima **QRIS, Virtual Account, Alfamart/Indomaret, bahkan PayPal** dalam satu klik.  
+Tanpa ribet, tanpa biaya bulanan, dana langsung masuk rekening lu.
 
-First, run the development server:
+---
 
-```bash
+🔗 **Demo:** [https://yosawer.vercel.app](https://yosawer.vercel.app)  
+⭐ Dapatkan bintang gratis → klik ⭐ di repo ini kalau berguna
+
+---
+
+## 🚀 Deploy 1-Klik
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AhzamyCode/yosawer&env=NEXT_PUBLIC_PAKASIR_SLUG,PAKASIR_API_KEY,NEXT_PUBLIC_REDIRECT_URL)
+
+---
+
+## 📦 Install Lokal
+
+1. **Clone**
+   ```bash
+   git clone https://github.com/AhzamyCode/yosawer.git
+   cd yosawer
+
+    Pasang dependencies
+
+npm install
+
+Duplikat .env.example → .env.local lalu isi
+
+NEXT_PUBLIC_PAKASIR_SLUG=your_project_slug
+PAKASIR_API_KEY=your_api_key
+NEXT_PUBLIC_REDIRECT_URL=https://yourdomain.com/thanks
+
+Jalankan
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🗂️ Struktur Folder
 
-## Learn More
+yosawer/
+├─ app/
+│  ├─ api/donate/route.ts     # Buat payment URL ke Pakasir
+│  ├─ api/webhook/route.ts    # Terima notifikasi dari Pakasir
+│  ├─ page.tsx                # Form donasi
+│  └─ thanks/page.tsx         # Halaman terima kasih
+├─ components/
+│  ├─ DonationForm.tsx
+│  └─ ui/...                  # Komponen ShadCN
+└─ next.config.js             # Konfigurasi hostname QR (optional)
 
-To learn more about Next.js, take a look at the following resources:
+🔑 Dapetin Kunci Pakasir
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Login / daftar → https://app.pakasir.com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Buat Proyek baru
 
-## Deploy on Vercel
+    Copy Slug & API Key → taro di .env.local
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Masukkan Webhook URL (https://yourdomain.com/api/webhook) di pengaturan proyek
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔁 Alur Donasi
+
+    Supporter masukin nominal → klik Donasi
+
+    Dilarikan ke halaman Pakasir (pilih QRIS, VA, Alfamart, dll)
+
+    Selesai bayar → Pakasir kirim webhook → otomatis terverifikasi
+
+    Supporter balik ke /thanks
+
+🧪 Test Mode
+
+    Aktifkan Sandbox di dashboard Pakasir
+
+    Minimal Rp 10.000
+
+    Pakai tombol Simulasi Pembayaran buat trigger webhook instan
+
+🎨 Kustomisasi Cepet
+File	Gunanya
+app/page.tsx	Judul, deskripsi, meta SEO
+components/DonationForm.tsx	Placeholder, label, warna tombol
+app/thanks/page.tsx	Pesan terima kasih
+public/favicon.ico	Ganti logo lu
+📊 Contoh Webhook
+
+Pakasir akan POST ke /api/webhook:
+
+{
+  "amount": 75000,
+  "order_id": "YSW-1712345678900",
+  "project": "your_slug",
+  "status": "completed",
+  "payment_method": "qris",
+  "completed_at": "2024-09-10T08:07:02.819+07:00"
+}
+
+    Simpan ke DB, kirim notif Telegram, dsb – bebas.
+
+📄 Lisensi
+
+MIT – fork, jual, modifikasi silahkan.
+💬 Butuh Bantuan?
+
+Open issue atau mention @AhzamyCode
+
+.
+Kalau repo ini membantu, jangan lupa kasih ⭐ ya!
+☕ Dukung Proyek Ini
+
+Kalau lu suka proyek ini atau pengen support biar terus berkembang ☕
+Silakan donasi lewat QRIS berikut:
+👉 https://qris.zone.id/ahzamycode
