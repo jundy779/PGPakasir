@@ -43,7 +43,7 @@ Buka
     http://localhost:3000
 
 🗂️ Struktur Folder
-
+ ```bash
 yosawer/
 ├─ app/
 │  ├─ api/donate/route.ts     # Buat payment URL ke Pakasir
@@ -54,7 +54,7 @@ yosawer/
 │  ├─ DonationForm.tsx
 │  └─ ui/...                  # Komponen ShadCN
 └─ next.config.js             # Konfigurasi hostname QR (optional)
-
+ ```
 🔑 Dapetin Kunci Pakasir
 
     Login / daftar → https://app.pakasir.com
