@@ -25,19 +25,19 @@ Tanpa ribet, tanpa biaya bulanan, dana langsung masuk rekening lu.
    cd yosawer
 
     Pasang dependencies
-
+ ```bash
 npm install
-
+ ```
 Duplikat .env.example → .env.local lalu isi
-
+ ```bash
 NEXT_PUBLIC_PAKASIR_SLUG=your_project_slug
 PAKASIR_API_KEY=your_api_key
 NEXT_PUBLIC_REDIRECT_URL=https://yourdomain.com/thanks
-
+ ```
 Jalankan
-
+ ```bash
 npm run dev
-
+ ```
 Buka
 
     http://localhost:3000
@@ -92,7 +92,7 @@ public/favicon.ico	Ganti logo lu
 📊 Contoh Webhook
 
 Pakasir akan POST ke /api/webhook:
-
+ ```bash
 {
   "amount": 75000,
   "order_id": "YSW-1712345678900",
@@ -101,7 +101,7 @@ Pakasir akan POST ke /api/webhook:
   "payment_method": "qris",
   "completed_at": "2024-09-10T08:07:02.819+07:00"
 }
-
+ ```
     Simpan ke DB, kirim notif Telegram, dsb – bebas.
 
 📄 Lisensi
