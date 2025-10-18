@@ -85,12 +85,13 @@ yosawer/
 
 🎨 Kustomisasi Cepet
 File	Gunanya
+```
 app/page.tsx	Judul, deskripsi, meta SEO
 components/DonationForm.tsx	Placeholder, label, warna tombol
 app/thanks/page.tsx	Pesan terima kasih
 public/favicon.ico	Ganti logo lu
 📊 Contoh Webhook
-
+```
 Pakasir akan POST ke /api/webhook:
  ```bash
 {
