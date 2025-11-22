@@ -1,5 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Handler untuk GET request (info endpoint)
+export async function GET(req: NextRequest) {
+  return NextResponse.json(
+    {
+      message: "Webhook endpoint aktif",
+      description: "Endpoint ini menerima POST request dari Pakasir untuk notifikasi payment",
+      method: "POST",
+      endpoint: "/api/webhook",
+      status: "ready",
+    },
+    { status: 200 }
+  );
+}
+
+// Handler untuk POST request (webhook dari Pakasir)
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
