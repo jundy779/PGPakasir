@@ -198,7 +198,7 @@ export default function DonationForm() {
           {/* Submit Button */}
           <Button
             type="submit"
-            disabled={loading || !amount || (amount && parseInt(amount) < 2000)}
+            disabled={loading || !amount || (amount ? parseInt(amount) < 2000 : false)}
             className="w-full h-12 text-base font-semibold shadow-md hover:shadow-lg transition-all"
             size="lg"
             aria-label={loading ? "Memproses donasi" : "Lanjutkan donasi"}
